@@ -1,0 +1,22 @@
+<ng-container *ngIf="user; else noUser">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <div mat-card-avatar class="avatar">
+        <img *ngIf="user.avatarUrl; else noAvatar" [src]="user.avatarUrl" alt="Avatar" />
+        <ng-template #noAvatar>
+          <mat-icon>account_circle</mat-icon>
+        </ng-template>
+      </div>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-actions>
+      <button class="delete-button" (click)="deleteUser()">Törlés</button>
+    </mat-card-actions>    
+  </mat-card>
+</ng-container>
+
+<ng-template #noUser>
+  <p style="text-align:center; margin-top: 2rem;">Nem vagy bejelentkezve.</p>
+</ng-template>

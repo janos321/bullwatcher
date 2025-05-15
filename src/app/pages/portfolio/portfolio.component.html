@@ -1,0 +1,61 @@
+<mat-card class="portfolio-card">
+  <h2>Portfóliód: {{ allVolume | number:'1.2-2' }} USDT</h2>
+
+  <button mat-raised-button color="primary" (click)="addTransaction()">
+    ➕ Hozzáadás
+  </button>
+
+  <div class="filters">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Szimbólum szűrése</mat-label>
+      <input
+        matInput
+        [(ngModel)]="symbolFilter"
+        (ngModelChange)="updateCoinSymbols()"
+        placeholder="Pl.: BTC"
+      />
+    </mat-form-field>
+
+    <mat-radio-group
+      [(ngModel)]="sortType"
+      (change)="updateCoinSymbols()"
+      class="sort-options"
+      aria-label="Rendezés módja"
+    >
+      <mat-radio-button value="abc">ABC szerint rendezés</mat-radio-button>
+      <mat-radio-button value="amount">Mennyiség szerint rendezés</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="toggle-row">
+      <mat-slide-toggle
+        [(ngModel)]="descending"
+        (change)="updateCoinSymbols()"
+      >
+        Csökkenő sorrend
+      </mat-slide-toggle>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Minimum mennyiség</mat-label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="minAmount"
+        (ngModelChange)="updateCoinSymbols()"
+      />
+    </mat-form-field>
+  </div>
+</mat-card>
+
+<div class="portfolio-summary">
+  @for (coin of coinSymbols; track coin) {
+    <app-portfolio-coin-row
+      [symbol]="coin"
+      [amount]="coins[coin]"
+      [price]="prices[coin]"
+      (clicked)="onCoinClicked($event)"
+      (remove)="onCoinRemove($event)">
+    </app-portfolio-coin-row>
+  }
+
+</div>

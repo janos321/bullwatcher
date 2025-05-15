@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" class="mobile-sidenav">
+    <nav class="mobile-nav-links">
+      <a routerLink="/home" routerLinkActive="active-link" (click)="sidenav.close()">🏠 Home</a>
+      @if(isLoggedIn()){
+      <a routerLink="/portfolio" routerLinkActive="active-link" (click)="sidenav.close()">💼 Portfolio</a>
+      <a routerLink="/profile" routerLinkActive="active-link" (click)="sidenav.close()">👤 Profile</a>
+      <a (click)="logOut()">🔐 logOut</a>
+      }
+      @if(!isLoggedIn()){
+      <a routerLink="/login" routerLinkActive="active-link" (click)="sidenav.close()">🔓 Login</a>
+      }
+    </nav>    
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="main-header">
+      <button mat-icon-button class="menu-button" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="logo-and-nav">
+        <div class="logo">
+          <img src="indexpic.png" alt="BullWatcher Logo" />
+          <span>BullWatcher</span>
+        </div>
+
+        <nav class="nav-links">
+          <a routerLink="/home" routerLinkActive="active-link">🏠 Home</a>
+          @if(isLoggedIn()){
+          <a routerLink="/portfolio" routerLinkActive="active-link">💼 Portfolio</a>
+          <a routerLink="/profile" routerLinkActive="active-link">👤 Profile</a>
+          <a (click)="logOut()">🔐 logOut</a>
+          }
+          @if(!isLoggedIn()){
+          <a routerLink="/login" routerLinkActive="active-link">🔓 Login</a>
+          }
+        </nav>
+      </div>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

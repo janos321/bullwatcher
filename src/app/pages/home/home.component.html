@@ -1,0 +1,59 @@
+<mat-card class="chart-card">
+  <mat-card-content class="chart-layout">
+    
+    <div class="chart-area">
+      <div id="tradingview-widget"></div>
+    </div>
+
+    <div class="symbol-section">
+      @if(isLoggedIn()){
+      <div class="top-bar">
+        <mat-form-field appearance="outline" class="group-selector">
+          <mat-label>Lista kiválasztása</mat-label>
+          <mat-select [(value)]="selectedGroup">
+            @for (group of symbolGroupNames; track group) {
+              <mat-option [value]="group">
+                <div class="option-wrapper">
+                  <span class="group-name" (click)="onGroupChange(group)">{{ group }}</span>
+                  @if (group !== selectedGroup&&group!=='Basic') {
+                    <button mat-icon-button color="warn" class="delete-button" (click)="deleteGroup(group); $event.stopPropagation()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  }
+                </div>
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-icon-button color="primary" (click)="addGroup()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    }
+
+      <div class="symbol-list">
+        @for (symbol of symbols[selectedGroup]; track symbol.value) {
+          <button
+            mat-raised-button
+            color="accent"
+            class="symbol-button"
+            [ngStyle]="selectedSymbol === symbol.value ? {
+              'box-shadow': '0 0 10px rgba(244, 67, 54, 0.6)',
+              'background': 'linear-gradient(to right, #f44336, #e57373)',
+              'color': 'white'
+            } : {}"
+            (click)="onSymbolChange(symbol.value)">
+            <span [innerHTML]="symbol.label | highlightSymbolPipe"></span>
+        </button>        
+        }
+        @if(isLoggedIn()){
+        <button mat-stroked-button class="symbol-button add-btn" [ngClass]="{ 'disabled-btn': symbols[selectedGroup] && symbols[selectedGroup].length > 20 }" (click)="addSymbolToGroup()">
+          <mat-icon>add</mat-icon> Szimbólum hozzáadása
+        </button>
+      }
+      </div>
+    </div>
+  
+  </mat-card-content>
+</mat-card>
