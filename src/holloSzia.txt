@@ -4,3 +4,7 @@ hat ez nagyon joo
 {
 dflouersert
 }
+else
+{
+éáasádésss
+}
