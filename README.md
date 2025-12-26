@@ -1,60 +1,103 @@
-# BullWatcher
-Topic name: Kriptovaluta árfolyam figyelő alkalmazás
+# 📊 BullWatcher — Crypto portfólió követő webalkalmazás
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+A **BullWatcher** egy modern, Angular alapú webalkalmazás, amely lehetővé teszi,
+hogy a felhasználók saját kriptovaluta-portfóliójukat rögzítsék, kövessék
+és elemezzék (felhőben tárolva), biztonságos bejelentkezéssel.
 
-## Development server
+Cél: egyszerű, gyors és átlátható eszköz mindenki számára,
+aki szeretné látni, hogyan teljesít a portfóliója.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## ✨ Fő funkciók
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 📈 Portfólió kezelés
+- saját coinok felvétele
+- vételi ár, mennyiség és dátum megadása
+- aktuális érték automatikus számítása
+- összesített profit / veszteség kijelzése
 
-## Code scaffolding
+### 📊 Valós idejű árfolyamok
+- **TradingView** integráció
+- grafikonok és árfolyam-nézetek
+- kedvencek listázása
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 🔐 Bejelentkezés (Google)
+- Firebase Authentication
+- Google-alapú bejelentkezés
+- felhasználónként elkülönített adatok
+- biztonságos hozzáférés a portfólióhoz
 
-```bash
-ng generate component component-name
-```
+### ☁️ Felhő alapú mentés
+- Firebase Firestore
+- valós idejű szinkronizáció
+- adatok elérhetők több eszközről is
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🧱 Technológiai stack
 
-## Building
+### 🌐 Frontend
+**Angular**
+- komponens alapú architektúra  
+- szolgáltatások (services) az adatkezeléshez  
+- reaktív űrlapok  
+- moduláris felépítés  
+- state kezelés és megosztott állapot
 
-To build the project run:
+### ☁️ Backend / Adat
+**Firebase / Firestore**
+- real-time adatbázis
+- Google Authentication
+- biztonsági szabályok
+- skálázható adatmodell
 
-```bash
-ng build
-```
+### ➕ Integrációk
+- TradingView widget
+- (tervezett) külső árfolyam API-k
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🧭 Felhasználói folyamat
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. Felhasználó bejelentkezik Google-lel  
+2. Portfólió létrehozása vagy betöltése  
+3. Coinok felvétele és szerkesztése  
+4. Az alkalmazás automatikusan számol:
+   - aktuális érték
+   - teljes profit / veszteség  
+5. Árfolyamok követése TradingView grafikonokon  
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## 👨‍💻 Fejlesztői fókusz
 
-For end-to-end (e2e) testing, run:
+- tiszta, jól szervezett Angular struktúra
+- újrafelhasználható komponensek
+- service-alapú adatkezelés
+- Firebase integráció
+- biztonság + felhasználó-specifikus adatok
+- reszponzív felület
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🚀 Tervek
 
-## Additional Resources
+- értesítések árfolyamváltozás esetén
+- több külön portfólió kezelése
+- fejlettebb statisztikák
+- dark / light mód
+- export (CSV / PDF)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 📌 Megjegyzés
+
+Tanulási és portfólió projekt,
+de célja, hogy valós, használható eszközzé fejlődjön.
+
+---
+
+## 📩 Kapcsolat
+
+Fejlesztő: **Horváth János**
